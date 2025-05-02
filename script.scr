@@ -1,0 +1,86 @@
+#Função de movimentação do personagem e colisão
+function scr_personagem_andando(){
+
+  direita = keyboard_check(ord("D"))
+  esquerda = keyboard_check(ord("A"))
+  cima = keyboard_check(ord("W"))
+  baixo = keyboard_check(ord("S"))
+  
+  spdh = (direita - esquerda) * spd 
+  spdv = (baixo - cima) * spd
+
+  	if place_meeting(x + spdh, y, obj_colisao){ #Se tiver encontro do objeto personagem com o objeto colocado para colisão horizontal
+  	while !place_meeting(x + sign(spdh), y, obj_colisao){ #Enquanto não tem encontro entre os objetos
+  		x += sign(spdh) #Quantidade de pixels que será deslocado ao se movimentar, fazendo uma colisão mais exata
+  	}
+  	spdh = 0 #Não pode se movimentar horizontalmente quando encostar
+  }
+  
+  if place_meeting(x, y + spdv, obj_colisao){ #Se tiver encontro do objeto personagem com o objeto colocado para colisão vertical
+  	while !place_meeting(x, y + sign(spdv), obj_colisao){ #Enquanto não tem encontro entre os objetos
+  		y += sign(spdv) #Quantidade de pixels que será deslocado ao se movimentar, fazendo uma colisão mais exata
+  	}
+  	spdv = 0 #Não pode se movimentar verticalmente quando encostar
+  }
+  
+  x += spdh #Adiciona à X a velocidade horizontal
+  y += spdv #Adiciona à Y a velocidade vertical
+
+  #OPÇÃO 1 DE MUDANÇA DE SPRITES COM O TECLADO
+  sprite_index = sprites[move][lado]
+	
+	if spdh != 0 or spdv != 0{
+		move = 1
+	}
+	else{
+		move = 0
+	}
+	
+	if baixo{
+		side = 0
+	}
+	if cima{
+		side = 1
+	}
+	if direita{
+		side = 2
+	}
+	if esquerda{
+		side = 3
+	}
+ 
+  #OPÇÃO 2 DE MUDANÇA DE SPRITES COM O MOUSE
+  dir=floor((point_direction(x, y, mouse_x, mouse_y)+45)/90)
+  
+  if spdh = 0 or spdv = 0{
+  	switch dir{
+        case 0:
+            sprite_index = spr_personagem_parado_direita
+        break
+        case 1:
+            sprite_index = spr_personagem_parado_costas
+        break
+        case 2:
+            sprite_index = spr_personagem_parado_esquerda
+        break
+        case 3:
+            sprite_index = spr_personagem_parado_frente
+        break
+    }
+  }else{
+  	switch dir{
+        case 0:
+            sprite_index = spr_personagem_move_direita
+        break
+        case 1:
+            sprite_index = spr_personagem_move_costas
+        break
+        case 2:
+            sprite_index = spr_personagem_move_esquerda
+        break
+        case 3:
+            sprite_index = spr_personagem_move_frente
+        break
+    }
+  }
+}
