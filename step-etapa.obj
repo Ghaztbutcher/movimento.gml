@@ -1,0 +1,5 @@
+#Execução do estado inicial
+script_execute(estado)
+
+#Profundidade no ambiente
+depth = -y
