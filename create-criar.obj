@@ -1,19 +1,19 @@
-#Direções de movimento
+//Direções de movimento
 direita = 0
 esquerda = 0 
 cima = 0
 baixo = 0
 
-#Velocidade horizontal e vertical
-spdh = 0 #Horizontal
-spdv = 0 #Vertical
+//Velocidade horizontal e vertical
+spdh = 0 //Horizontal
+spdv = 0 //Vertical
 
-spd = 4 #Velocidade do personagem
+spd = 4 //Velocidade do personagem
 
-#OPÇÕES DE MUDANÇA DE SPRITES, MAS É POSSÍVEL UTILIZAR AS DUAS AO MESMO TEMPO
+//OPÇÕES DE MUDANÇA DE SPRITES, MAS É POSSÍVEL UTILIZAR AS DUAS AO MESMO TEMPO
 
-#OPÇÃO 1 DE MUDANÇA DE SPRITES
-#Direção de visão do sprite com o teclado
+//OPÇÃO 1 DE MUDANÇA DE SPRITES
+//Direção de visão do sprite com o teclado
 sprites[0][0] = spr_personagem_parado_frente
 sprites[0][1] = spr_personagem_parado_costas
 sprites[0][2] = spr_personagem_parado_direita
@@ -24,12 +24,12 @@ sprites[1][1] = spr_personagem_move_costas
 sprites[1][2] = spr_personagem_move_direita
 sprites[1][3] = spr_personagem_move_esquerda
 
-move = 0 #Indica se o personagem está parado ou se movendo, se 0, está parado, se 1, está se movendo
-lado = 0 #Indica o lado que o personagem está virado
+move = 0 //Indica se o personagem está parado ou se movendo, se 0, está parado, se 1, está se movendo
+lado = 0 //Indica o lado que o personagem está virado
 
-#OPÇÃO 2 DE MUDANÇA DE SPRITES
-#Direção de visão do sprite com o mouse
+//OPÇÃO 2 DE MUDANÇA DE SPRITES
+//Direção de visão do sprite com o mouse
 dir = 0
 
-#Estado inicial do personagem
+//Estado inicial do personagem
 estado = scr_personagem_andando
